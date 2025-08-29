@@ -1,0 +1,81 @@
+
+  <div class="min-h-screen bg-white flex flex-col md:flex-row pb-20">
+  <!-- LEFT: items / customer / anything -->
+  <section class="flex-1 md:w-1/2 md:order-1">
+    <!-- Header -->
+    <div class="flex items-center px-4 py-2">
+      <h1 class="font-semibold text-lg">Header</h1>
+    </div>
+
+    <!-- Customer -->
+    <div class="text-center py-2 text-gray-600">Select client</div>
+
+    <!-- Your items/list -->
+    <!-- <div class="p-4">
+      <div class="text-sm text-gray-500 mb-2 text-center">
+        Αρχείο ειδών • Barcode scanner • Ταμειακή μηχανή
+      </div>
+      <div
+        class="h-64 rounded-lg border border-dashed grid place-content-center text-gray-400"
+      >
+        Your items/list go here
+      </div>
+    </div> -->
+
+
+<!-- Προβολή γραμμών (στο box αριστερά που έγραφε "Your items/list go here") -->
+<!-- Παράδειγμα: βάλε αυτό στο box ή ακριβώς από πάνω -->
+    <div class="px-4" *ngIf="lines.length">
+      <ul class="space-y-1 text-sm">
+        <li class="flex justify-between" *ngFor="let l of lines">
+          <span class="text-gray-600">{{ l.dept }} — {{ l.qty }} × {{ format(l.unit) }}</span>
+          <span class="font-medium">{{ format(l.total) }}</span>
+        </li>
+      </ul>
+      <div class="mt-2 pt-2 border-t flex justify-between font-semibold">
+        <span>Σύνολο</span>
+        <span>{{ format(total) }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: keypad -->
+  <section class="md:w-1/2 md:order-2 flex flex-col bg-gray-100">
+    <!-- Display line -->
+    <div class="flex justify-between items-center px-6 py-4 text-2xl font-semibold">
+      <span>CL</span>
+      <span>{{ display }}</span>
+    </div>
+
+    <!-- Keypad -->
+    <div class="p-4 grid grid-cols-4 gap-2 flex-1">
+      <!-- row 1 -->
+     <!-- row 1 -->
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('7')">7</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('8')">8</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('9')">9</button>
+  <button class="bg-red-600 text-white py-6 rounded-lg active:scale-95" (click)="clearAll()">AC</button>
+
+  <!-- row 2 -->
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('4')">4</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('5')">5</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('6')">6</button>
+  <button class="bg-red-800 text-white py-6 rounded-lg active:scale-95" (click)="addDept('TM2')">TM2</button>
+
+  <!-- row 3 -->
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('1')">1</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('2')">2</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('3')">3</button>
+  <button class="bg-red-800 text-white py-6 rounded-lg active:scale-95" (click)="addDept('TM1')">TM1</button>
+
+  <!-- row 4 -->
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="multiplyMode()">X</button>
+
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('0')">0</button>
+  <button class="bg-gray-700 text-white py-6 rounded-lg active:scale-95" (click)="digit('.')">.</button>
+  <button class="bg-green-600 text-white py-6 rounded-lg active:scale-95">
+    {{ format(total) }}
+  </button>
+    </div>
+  </section>
+</div>

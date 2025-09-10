@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://91.98.117.108",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}
+

@@ -62,7 +62,8 @@
               "buildTarget": "ecr:build:production"
             },
             "development": {
-              "buildTarget": "ecr:build:development"
+              "buildTarget": "ecr:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -9,35 +9,36 @@
       <!-- Email (floating label with icon in label) -->
       <div class="relative">
         <input id="email" type="email" formControlName="email" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-        <label for="email" class="absolute left-2 top-2.5 flex items-center gap-2 px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <label for="email" class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+          <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 7.5l-9.6 6.4a1.5 1.5 0 01-1.7 0L.75 7.5M3 6h18a1.5 1.5 0 011.5 1.5v9A3.5 3.5 0 0119 20H5a3.5 3.5 0 01-3.5-3.5v-9A1.5 1.5 0 003 6z" />
           </svg>
-          <span>Email</span>
+          <span class="flex-shrink-0">Email</span>
         </label>
         <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Valid email is required</p>
       </div>
 
       <!-- Password -->
       <div class="relative">
-        <input id="password" type="password" formControlName="password" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-        <label for="password" class="absolute left-2 top-2.5 flex items-center gap-2 px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <input id="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+        <label for="password" class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+          <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7.875a4.875 4.875 0 10-9.75 0V10.5m12.75 0H3.75A1.5 1.5 0 002.25 12v7.5A1.5 1.5 0 003.75 21h16.5a1.5 1.5 0 001.5-1.5V12a1.5 1.5 0 00-1.5-1.5z" />
           </svg>
-          <span>Password</span>
+          <span class="flex-shrink-0">Κωδικός</span>
         </label>
         <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">Min 6 characters</p>
       </div>
+      
 
       <!-- First name -->
       <div class="relative">
         <input id="firstName" type="text" formControlName="firstName" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-        <label for="firstName" class="absolute left-2 top-2.5 flex items-center gap-2 px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <label for="firstName" class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+          <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0" />
           </svg>
-          <span>First name</span>
+          <span class="flex-shrink-0">Όνομα</span>
         </label>
         <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">Required</p>
       </div>
@@ -45,11 +46,11 @@
       <!-- Last name -->
       <div class="relative">
         <input id="lastName" type="text" formControlName="lastName" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-        <label for="lastName" class="absolute left-2 top-2.5 flex items-center gap-2 px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <label for="lastName" class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+          <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0" />
           </svg>
-          <span>Last name</span>
+          <span class="flex-shrink-0">Επώνυμο</span>
         </label>
         <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">Required</p>
       </div>
@@ -57,21 +58,21 @@
       <!-- Mobile -->
       <div class="relative">
         <input id="mobile" type="tel" formControlName="mobile" placeholder=" " class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-        <label for="mobile" class="absolute left-2 top-2.5 flex items-center gap-2 px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <label for="mobile" class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+          <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75A2.25 2.25 0 014.5 4.5h15a2.25 2.25 0 012.25 2.25v10.5A2.25 2.25 0 0119.5 19.5h-15A2.25 2.25 0 012.25 17.25V6.75zM8.25 16.5h7.5" />
           </svg>
-          <span>Mobile</span>
+          <span class="flex-shrink-0">Κινητό</span>
         </label>
         <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('mobile')?.touched && form.get('mobile')?.invalid">Required</p>
       </div>
 
-      <button type="submit" [disabled]="form.invalid || loading" class="w-full inline-flex justify-center items-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50">
+      <button type="submit" [disabled]="form.invalid || loading" class="w-full inline-flex justify-center items-center rounded-lg bg-[#7d1d1d] px-4 py-3 text-base font-medium text-white hover:bg-[#6b1717] focus:outline-none focus:ring-2 focus:ring-[#7d1d1d] disabled:opacity-50">
         <svg *ngIf="loading" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
         </svg>
-        {{ loading ? 'Submitting...' : 'Register' }}
+        {{ loading ? 'Εγγραφή...' : 'Εγγραφή' }}
       </button>
     </form>
 

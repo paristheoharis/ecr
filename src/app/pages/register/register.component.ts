@@ -16,6 +16,7 @@ export class RegisterComponent {
 
   loading = false;
   serverMessage: string | null = null;
+  hidePassword = true;
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -40,6 +41,10 @@ export class RegisterComponent {
         this.loading = false;
       }
     });
+  }
+
+  togglePassword() {
+    this.hidePassword = !this.hidePassword;
   }
 }
 

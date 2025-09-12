@@ -3,12 +3,13 @@ import { SalesComponent } from './pages/sales/sales.component';
 import { DataComponent } from './pages/data/data.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 export const routes: Routes = [
 
     {
         path: '',
-        component: SalesComponent,
+        component: LoginComponent,
     },
     
     {

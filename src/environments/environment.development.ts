@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
-  apiBase: ''
+  apiBase: '',
+  timeout: 10000,
+  retryAttempts: 2
 };
 

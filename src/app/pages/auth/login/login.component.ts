@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth.service';
+import { LoginResponse } from '../../../models/loginResponse.model';
 
 @Component({
   selector: 'app-login',
@@ -35,8 +36,13 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(email, password)
       .subscribe({
-        next: () => this.router.navigate(['/']),
-        error: () => alert('Σφάλμα σύνδεσης — έλεγχος διαπιστευτηρίων')
+        next: (res: LoginResponse) => {
+          console.log(res);
+          this.router.navigate(['/']);
+        },
+        error: (err: any) => {
+          console.error('Login error:', err);
+        }
       });
   }
 }

@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { LoginResponse } from '../models/loginResponse.model';
 
 export interface RegisterPayload {
     email: string;
@@ -23,13 +24,13 @@ export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly baseUrl = environment.apiBase;
 
-    login(email: string, password: string): Observable<any> {
-        const url = `${this.baseUrl}/api/auth/login`;
-        return this.http.post<any>(url, { email, password });
+    login(email: string, password: string): Observable<LoginResponse> {
+        const url = `${this.baseUrl}auth/login`;
+        return this.http.post<LoginResponse>(url, { email, password });
     }
 
     register(payload: RegisterPayload): Observable<RegisterResponse> {
-        const url = `${this.baseUrl}/api/auth/initial-registration`;
+        const url = `${this.baseUrl}auth/initial-registration`;
         return this.http.post<RegisterResponse>(url, payload);
     }
 

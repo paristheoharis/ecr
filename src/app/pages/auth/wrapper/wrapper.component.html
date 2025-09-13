@@ -1,0 +1,31 @@
+<div class="min-h-screen w-full flex items-center justify-center bg-gray-50 p-4">
+  <div class="w-full max-w-md bg-white rounded-xl shadow-sm ring-1 ring-gray-200 p-6 sm:p-8">
+    <!-- Toggle Buttons -->
+    <div class="flex space-x-1 rounded-lg bg-gray-100 p-1 mb-6">
+      <button
+        (click)="isLogin = true"
+        [class.bg-white]="isLogin"
+        [class.shadow-sm]="isLogin"
+        class="flex-1 rounded-md px-3 py-2 text-sm font-medium transition-all duration-200"
+        [class.text-gray-500]="!isLogin"
+        [class.text-gray-900]="isLogin">
+        Σύνδεση
+      </button>
+      <button
+        (click)="isLogin = false"
+        [class.bg-white]="!isLogin"
+        [class.shadow-sm]="!isLogin"
+        class="flex-1 rounded-md px-3 py-2 text-sm font-medium transition-all duration-200"
+        [class.text-gray-500]="isLogin"
+        [class.text-gray-900]="!isLogin">
+        Εγγραφή
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div [ngSwitch]="isLogin">
+      <app-login *ngSwitchCase="true"></app-login>
+      <app-register *ngSwitchCase="false"></app-register>
+    </div>
+  </div>
+</div>

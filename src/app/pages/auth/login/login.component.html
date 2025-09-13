@@ -1,36 +1,59 @@
-<section class="login-page">
-  <div class="bg-layer" aria-hidden="true"></div>
+<div class="mb-6 text-center">
+      <h2 class="text-2xl font-semibold text-gray-900">Login to your account</h2>
+    </div>
 
-  <div class="login-wrap" role="main" aria-labelledby="login-title">
-    <form class="login-card" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-      <h1 id="login-title" class="title">Σύνδεση</h1>
+        <form class="space-y-5" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Email -->
+          <div class="relative">
+            <input id="email" type="email" formControlName="email" placeholder=" " autocomplete="email"
+              class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            <label for="email"
+              class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+              <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.75 7.5l-9.6 6.4a1.5 1.5 0 01-1.7 0L.75 7.5M3 6h18a1.5 1.5 0 011.5 1.5v9A3.5 3.5 0 0119 20H5a3.5 3.5 0 01-3.5-3.5v-9A1.5 1.5 0 003 6z" />
+              </svg>
+              <span class="flex-shrink-0">Email</span>
+            </label>
+            <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
+              Παρακαλώ εισαγάγετε email</p>
+            <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']">
+              Μη έγκυρο email</p>
+          </div>
 
-      <label class="field">
-        <span class="label-text">Email</span>
-        <input type="email" formControlName="email" autocomplete="email" placeholder="you@example.com" />
-        <div class="field-error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-          <small *ngIf="form.get('email')?.errors?.['required']">Παρακαλώ εισαγάγετε email</small>
-          <small *ngIf="form.get('email')?.errors?.['email']">Μη έγκυρο email</small>
-        </div>
-      </label>
+          <!-- Password -->
+          <div class="relative">
+            <input id="password" type="password" formControlName="password" placeholder=" " autocomplete="current-password"
+              class="peer block w-full rounded-lg border border-gray-300 bg-transparent px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            <label for="password"
+              class="absolute left-2 top-2.5 flex items-center gap-2 whitespace-nowrap px-1 text-gray-500 transition-all bg-white peer-focus:-top-2 peer-focus:text-xs peer-focus:text-indigo-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs">
+              <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M16.5 10.5V7.875a4.875 4.875 0 10-9.75 0V10.5m12.75 0H3.75A1.5 1.5 0 002.25 12v7.5A1.5 1.5 0 003.75 21h16.5a1.5 1.5 0 001.5-1.5V12a1.5 1.5 0 00-1.5-1.5z" />
+              </svg>
+              <span class="flex-shrink-0">Κωδικός</span>
+            </label>
+            <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+              Παρακαλώ εισαγάγετε κωδικό</p>
+            <p class="mt-1 text-sm text-rose-600" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']">
+              Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες</p>
+          </div>
 
-      <label class="field">
-        <span class="label-text">Κωδικός</span>
-        <input type="password" formControlName="password" autocomplete="current-password" placeholder="Κωδικός" />
-        <div class="field-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-          <small *ngIf="form.get('password')?.errors?.['required']">Παρακαλώ εισαγάγετε κωδικό</small>
-          <small *ngIf="form.get('password')?.errors?.['minlength']">Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες</small>
-        </div>
-      </label>
+          <!-- Remember me -->
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" formControlName="remember"
+              class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+            <label for="remember" class="ml-2 block text-sm text-gray-700">Θυμήσου με</label>
+          </div>
 
-      <label class="checkbox-row">
-        <input type="checkbox" formControlName="remember" />
-        <span>Θυμήσου με</span>
-      </label>
+          <button type="submit" [disabled]="form.invalid"
+            class="w-full inline-flex justify-center items-center rounded-lg bg-[#7d1d1d] px-4 py-3 text-base font-medium text-white hover:bg-[#6b1717] focus:outline-none focus:ring-2 focus:ring-[#7d1d1d] disabled:opacity-50">
+            Σύνδεση
+          </button>
 
-      <button type="submit" class="btn-primary">Σύνδεση</button>
+          <div class="text-center">
+            <a href="#" class="text-sm text-indigo-600 hover:text-indigo-500">Ξέχασες τον κωδικό;</a>
+          </div>
+        </form>
+    <!-- <div class="mt-4 text-center text-sm text-gray-600" *ngIf="serverMessage">{{ serverMessage }}</div> -->
 
-      <a class="forgot-link" href="#" tabindex="0">Ξέχασες τον κωδικό;</a>
-    </form>
-  </div>
-</section>

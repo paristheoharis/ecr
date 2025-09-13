@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { PaymentService } from '../../services/payment.service';
 
 type Dept = 'TM1' | 'TM2';
 
@@ -24,7 +26,15 @@ export class SalesComponent {
   qty: number | null = null;
 
   lines: Line[] = [];
+
   get total(): number { return this.lines.reduce((s, l) => s + l.total, 0); }
+
+
+  constructor(
+        private router: Router,
+        private paymentService: PaymentService
+  ) {}
+
 
   private toAmount(s: string): number {
     if (!s) return 0;
@@ -84,5 +94,11 @@ export class SalesComponent {
     // no qty mode → show current as price, or total if empty
     if (this.current) return this.format(this.toAmount(this.current));
     return this.format(this.total);
+  }
+
+
+  goToPayment() {
+    this.paymentService.setTotal(this.total);
+    this.router.navigate(['/payment']);
   }
 }

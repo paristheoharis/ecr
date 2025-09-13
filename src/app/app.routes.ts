@@ -5,6 +5,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { WrapperComponent } from './pages/auth/wrapper/wrapper.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 export const routes: Routes = [
 
@@ -36,4 +37,8 @@ export const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
     },
+    {
+        path: "payment",
+        component: PaymentComponent
+    }
 ]
